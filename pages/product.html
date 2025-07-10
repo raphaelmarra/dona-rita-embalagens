@@ -107,7 +107,7 @@
     <div class="progressive-discount-banners">
         {% for discount in ProgressiveDiscounts %}
             {% if discount.banner %}
-                <img src="{{ discount.banner }}" alt="{{ discount.name }}"/>
+                <img src="{{ discount.banner }}" alt="{{ discount.name }}" width="600" height="200" loading="lazy"/>
             {% endif %}
         {% endfor %}
     </div>
@@ -142,7 +142,7 @@
                                 {% for images in product.images %}
                                     <li class="swiper-slide {% if loop.first -%} active {%- endif %}" data-index="{{ loop.index }}">
                                         <div class="thumb">
-                                            <img src="{{ images.small }}" alt="{{ product.name }}">
+                                            <img src="{{ images.small }}" alt="{{ product.name }}" width="80" height="80" loading="lazy">
                                         </div>
                                     </li>
                                 {% endfor %}
@@ -173,7 +173,7 @@
                     {% for images in product.images %}
                         <div class="image swiper-slide {% if loop.first -%} active {%- endif %}" data-index="{{ loop.index }}">
                             <div class="zoom">
-                                <img class="swiper-lazy" data-src="{{ images.full }}" alt="{{ product.name }}">
+                                <img class="swiper-lazy" data-src="{{ images.full }}" alt="{{ product.name }}" width="600" height="600" loading="lazy">
                             </div>
                         </div>
                     {% endfor %}
@@ -188,7 +188,7 @@
                             {% for images in product.images %}
                                 <li class="swiper-slide {% if loop.first -%} active {%- endif %}" data-index="{{ loop.index }}">
                                     <div class="thumb">
-                                        <img src="{{ images.small }}" alt="{{ product.name }}">
+                                        <img src="{{ images.small }}" alt="{{ product.name }}" width="80" height="80" loading="lazy">
                                     </div>
                                 </li>
                             {% endfor %}
@@ -345,9 +345,9 @@
                                     {{ discount.description }}
                                 </li>
                                 {% if discount.banner %}
-                                    <img src="{{ discount.banner }}" alt="{{ discount.name }}"/>
+                                    <img src="{{ discount.banner }}" alt="{{ discount.name }}" width="600" height="200" loading="lazy"/>
                                 {% else %}
-                                <img src="{{ asset('img/frete_sp.png') }}" alt="{{discount.name}}">
+                                <img src="{{ asset('img/frete_sp.png') }}" alt="{{discount.name}}" width="600" height="200" loading="lazy">
                                 {% endif %}
                             {% endfor %}
                         </ul>

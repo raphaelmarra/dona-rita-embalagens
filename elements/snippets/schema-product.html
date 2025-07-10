@@ -45,7 +45,7 @@
 {% endif %}
 
 {% set image = product.images[0].large ?: tray.paths.system_image ~ "/new_imgoff.png" %}    
-<img itemprop="image" src="{{ image }}" alt="{{ product.name|e }}" class="tray-hide"/>
+<img itemprop="image" src="{{ image }}" alt="{{ product.name|e }}" class="tray-hide" width="600" height="600" loading="lazy"/>
 
 {% if product.comments %}
 <span itemprop="review" itemscope itemtype="https://schema.org/Review">

@@ -4,7 +4,7 @@
     {% for image in images %}
         <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
             <a href="{{ image.full }}" itemprop="contentUrl" data-imagezoom="{{ image.full }}">
-                <img src="{{ image.large }}" itemprop="thumbnail" alt="Image description" />
+                <img src="{{ image.large }}" itemprop="thumbnail" alt="Image description" width="600" height="600" loading="lazy" />
             </a>
         </figure>
     {% endfor %}

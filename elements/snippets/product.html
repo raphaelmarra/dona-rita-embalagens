@@ -36,10 +36,10 @@
             {% if settings.show_product_slide and pages.current == 'home' %}              
                 <div class="swiper-lazy-preloader" style="opacity: .4"></div>
             {% endif %}
-            <img class="{{ image_class }} {{ settings.show_image_hover ? 'primary-image' : 'no-hover' }}" src="{{ asset('img/empty.png') }}" data-src="{{ product.images[0].large }}" alt="{{ product.name }}">
+            <img class="{{ image_class }} {{ settings.show_image_hover ? 'primary-image' : 'no-hover' }}" src="{{ asset('img/empty.png') }}" data-src="{{ product.images[0].large }}" alt="{{ product.name }}" width="300" height="300" loading="lazy">
             
             {% if settings.show_image_hover %}              
-                <img class="{{ image_class }} hover-image" src="{{ asset('img/empty.png') }}" data-src="{{ product.images[1].large }}" alt="{{ product.name }}">
+                <img class="{{ image_class }} hover-image" src="{{ asset('img/empty.png') }}" data-src="{{ product.images[1].large }}" alt="{{ product.name }}" width="300" height="300" loading="lazy">
             {% endif %}
         </a>
         {% if settings.show_product_seals_on_listing %}

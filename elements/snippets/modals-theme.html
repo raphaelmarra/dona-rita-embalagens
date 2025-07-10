@@ -63,7 +63,7 @@
                         <div class="newsletter flex justify-between align-center">
                             {% if settings.imagem_newsletter %}
                                 <div class="news_imagem">
-                                    <img {% if notLazy %}class="{{ lazy_class }}" src="{{ asset('img/sem-foto.gif') }}" data-{% endif %}src="{{ themePath }}{{ settings.imagem_newsletter }}" alt="Banner">
+                                    <img {% if notLazy %}class="{{ lazy_class }}" src="{{ asset('img/sem-foto.gif') }}" data-{% endif %}src="{{ themePath }}{{ settings.imagem_newsletter }}" alt="Banner" width="400" height="260" loading="lazy">
                                 </div>
                             {% endif %}
                             <div class="info align-center {{ settings.imagem_newsletter ? 'divided' : 'full' }}">
