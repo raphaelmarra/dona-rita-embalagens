@@ -1,0 +1,41 @@
+{% set level = level | default(1) %}
+{% set has_children = category.children %}
+<li class="{% if level == 1 %}first-level{% endif %}{% if has_children %} sub{% endif %}"{% if level == 1 %} data-cat-id="{{ category.id }}"{% endif %}>
+    <a href="{{ category.link }}" title="{{ category.name }}">
+        {% if level == 1 %}
+        <div class="name">{{ category.name }}</div>
+        {% else %}
+        {{ category.name }}
+        {% endif %}
+    </a>
+    {% if has_children %}
+    <ul class="sub-list {% if level == 1 %}second-level{% else %}third-level{% endif %}{% if level == 1 and show_product_menu %} menu-product{% endif %}">
+        {% if level == 1 %}
+        <div class="menu-scroll">
+            <a class="title-category" href="{{ category.link }}" title="{{ category.name }}">{{ category.name }}</a>
+            <br>
+        {% endif %}
+        {% for child in category.children %}
+            {% element 'snippets/menu-category' { 'category': child, 'level': level + 1 } %}
+        {% endfor %}
+        {% if level == 1 %}
+        </div>
+        {% if show_product_menu %}
+            {% set productCategory = Products({
+                'filter': ['available'],
+                'limit': 4,
+                'order': {'quantity_sold': 'desc'},
+                categories: category.id
+            }) %}
+            {% if productCategory %}
+                <div class="product-menu">
+                    {% element 'snippets/product-menu' {
+                        "products": productCategory
+                    } %}
+                </div>
+            {% endif %}
+        {% endif %}
+        {% endif %}
+    </ul>
+    {% endif %}
+</li>

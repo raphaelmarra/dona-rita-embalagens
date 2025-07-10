@@ -15,7 +15,7 @@
             <div class="box logo-box">
                 {% if settings.logo_footer %}
                     <a class="logo" href="{{ store.url }}" title="{{ store.name }}" aria-label="{{ store.name }}">
-                        <img src="{{ themePath }}{{ settings.logo_footer }}" alt="{{ store.name }}" width="222" height="36" />
+                        <img src="{{ themePath }}{{ settings.logo_footer }}" alt="{{ store.name }}" width="222" height="36" loading="lazy" />
                     </a>
                 {% else %}
                     <a class="logo" href="{{ store.url }}" title="{{ store.name }}">
@@ -188,7 +188,7 @@
                 <div class="plugoo">
                     <a class="logo-copyright" href="//www.tray.com.br/parceria/plugoo/" target="_blank" title="Plugoo - Tecnologia  para E-commerce">
                         Desenvolvido por
-                        <img src="{{ themePath }}img/plugoo-logo.png" alt="Plugoo - Tecnologia para Ecommerce" width="222" height="36">
+                        <img src="{{ themePath }}img/plugoo-logo.png" alt="Plugoo - Tecnologia para Ecommerce" width="222" height="36" loading="lazy">
                     </a>
                 </div>
                 <div class="tray">

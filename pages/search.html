@@ -36,10 +36,10 @@
 
                                         {% if banner.link %}
                                             <a href="{{ banner.link }}" {% if banner.target == '_blank' %} target="_blank" rel="noopener noreferrer" {% endif %}>
-                                                <img class="swiper-lazy" data-src="{{ banner.image }}" alt="{{ banner.label }}" />
+                                                <img class="swiper-lazy" data-src="{{ banner.image }}" alt="{{ banner.label }}" width="600" height="400" loading="lazy" />
                                             </a>
                                         {% else %}
-                                            <img class="swiper-lazy" data-src="{{ banner.image }}" alt="{{ banner.label }}" />
+                                            <img class="swiper-lazy" data-src="{{ banner.image }}" alt="{{ banner.label }}" width="600" height="400" loading="lazy" />
                                         {% endif %}
 
                                     </div>
@@ -53,10 +53,10 @@
                         {% set link = banners.title.link ? banners.title.tracked_link : null %}
                         {% if link %}
                             <a href="{{ link }}" {% if banners.title.target == '_blank' %} target="_blank" rel="noopener noreferrer" {% endif %}>
-                                <img src="{{ banners.title.src }}" alt="{{ banners.title.label }}" />
+                                <img src="{{ banners.title.src }}" alt="{{ banners.title.label }}" width="600" height="400" loading="lazy" />
                             </a>
                         {% else %}
-                            <img src="{{ banners.title.src }}" alt="{{ banners.title.label }}" />
+                            <img src="{{ banners.title.src }}" alt="{{ banners.title.label }}" width="600" height="400" loading="lazy" />
                         {% endif %}
 
                     {% endif %}

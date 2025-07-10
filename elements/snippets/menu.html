@@ -14,62 +14,7 @@
 
 
             {% for category in show_categories %}
-                <li class="first-level {%- if category.children %} sub {%- endif %}" data-cat-id="{{ category.id }}">
-                    
-                    <a href="{{ category.link }}" title="{{ category.name }}">
-                        <div class="name">
-                            {{ category.name }}
-                        </div>
-                    </a>
-                    
-                    {% if category.children %}
-                    <ul class="sub-list second-level {% if settings.show_product_menu %} menu-product {% endif %}">
-                        <div class="menu-scroll">
-                            <a class="title-category" href="{{ category.link }}" title="{{ category.name }}">{{ category.name }}</a>
-                            <br>
-                            {% for level2 in category.children %}
-
-                                <li {% if level2.children %} class="sub" {% endif %}>
-                                    
-                                    <a href="{{ level2.link }}" title="{{ level2.name }}">{{ level2.name }}</a>
-                                
-                                    {% if level2.children %}
-                                    <ul class="sub-list third-level">
-                                        {% for level3 in level2.children %}
-                                        <li>
-                                            <a href="{{ level3.link }}" title="{{ level3.name }}">{{ level3.name }}</a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %} 
-
-                                </li>
-
-                            {% endfor %} 
-                        </div>
-                        {% if settings.show_product_menu %}   
-                            {% set productCategory = Products({ 
-                                'filter': ['available'], 
-                                'limit': 4, 
-                                'order': {'quantity_sold': 'desc'}, 
-                                categories: category.id 
-                                }) 
-                            %}
-
-                            {% if productCategory %}
-                                <div class="product-menu">
-                                    {% element 'snippets/product-menu' {
-                                        "products": productCategory
-                                    } 
-                                    %}
-                                </div>                       
-                            {% endif %}
-                        {% endif %}
-
-                    </ul>
-                    {% endif %} 
-                
-                </li>
+                {% element 'snippets/menu-category' { 'category': category, 'level': 1, 'show_product_menu': settings.show_product_menu } %}
             {% endfor %}
             
             {% if more_categories %}
@@ -132,3 +77,4 @@
     </div>
     <div height="100vh" type="absolute" class="overlay-nav"></div>
 </nav>
+

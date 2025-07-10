@@ -5,7 +5,7 @@
 
                 <div class="item">
                     <a href="{{ settings.banner_footer_link }}" rel="noopener noreferrer">
-                        <img {% if notLazy %}class="{{ lazy_class }}" src="{{ asset('img/empty.png') }}" data-{% endif %}src="{{ themePath }}{{ settings.banner_footer_img }}" alt="Banner">
+                        <img {% if notLazy %}class="{{ lazy_class }}" src="{{ asset('img/empty.png') }}" data-{% endif %}src="{{ themePath }}{{ settings.banner_footer_img }}" alt="Banner" width="1200" height="200" loading="lazy">
                     </a>
                 </div>
 

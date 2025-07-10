@@ -48,14 +48,25 @@
                         </h2>
                     </div>
     
+                    {% set groups = products|batch(12) %}
                     <div class="list-product flex {{ settings.show_product_slide ? 'swiper-wrapper' }}">
-                        {% for item in products %}
-                            <div class="item {{ settings.show_product_slide ? 'swiper-slide' }} {{ settings.fixed_actions ? 'item-actions-fixed' }}">
-                                {% element 'snippets/product' {
-                                    product : item
-                                } %}
-                            </div>            
-                        {% endfor %}
+                        {% if groups | length > 1 %}
+                            {% for group in groups %}
+                                <div class="{{ settings.show_product_slide ? 'swiper-slide' }}">
+                                    {% for item in group %}
+                                        <div class="item {{ settings.fixed_actions ? 'item-actions-fixed' }}">
+                                            {% element 'snippets/product' { product: item } %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {% for item in products %}
+                                <div class="item {{ settings.show_product_slide ? 'swiper-slide' }} {{ settings.fixed_actions ? 'item-actions-fixed' }}">
+                                    {% element 'snippets/product' { product : item } %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     {% if settings.show_product_slide %}              
                         <div class="swiper-button-prev"></div>

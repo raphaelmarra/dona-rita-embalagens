@@ -2,7 +2,7 @@
     <h5>&Agrave; Vista</h5>
     {% for payment in paymentMethods.order %}
         <div class="col-sm-2 col-xs-2 payment-form">
-            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}" width="40" height="24" loading="lazy">
         </div>
     {% endfor %}
 </div>
@@ -11,7 +11,7 @@
     <h5>A Prazo</h5>
     {% for payment in paymentMethods.credit %}
         <div class="col-sm-2 col-xs-2 payment-form">
-            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+            <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}" width="40" height="24" loading="lazy">
         </div>
     {% endfor %} 
 </div>  
