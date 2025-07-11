@@ -1,35 +1,33 @@
-(function($){
+
+(($) => {
     
-    $(document).on("ready",  function(){
+    $(document).on("ready",  () => {
         
-        var html = $('html'),
-            imgSrc = new Image(),
-            windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const html = $('html');
+        const imgSrc = new Image();
+        const windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         
             
         $(".lazy").lazyload();
             
         // shipping added below cepbox
-        function waitForElementToDisplay(selector, time) {
-            if(document.querySelector(selector)!=null) {
+        const waitForElementToDisplay = (selector, time) => {
+            if (document.querySelector(selector) !== null) {
                 $('.shipping-result').html($('.page-simula-frete'));
                 return;
             }
-            else {
-                setTimeout(function() {
-                    waitForElementToDisplay(selector, time);
-                }, time);
-            }
-        }
+            setTimeout(() => {
+                waitForElementToDisplay(selector, time);
+            }, time);
+        };
         
-        $('.botao-simular-frete, #shippingSimulatorButton').on("click", function() {
+        $('.botao-simular-frete, #shippingSimulatorButton').on('click', () => {
             $('.shipping-result').html('');
             waitForElementToDisplay('.page-simula-frete', 1000);
         });
         
-        if($.fn.jquery != '1.6.2'){
             
-            $('.banner-home-slide').slick({
+        $('.banner-home-slide').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 prevArrow: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="165.116 0 369.767 700" width="50" height="50" class="slick-arrow arrow-prev"><path d="M170.965,363.918l330.214,330.214c3.814,3.961,8.948,5.868,13.937,5.868c4.987,0,10.122-2.054,13.936-5.868c7.775-7.774,7.775-20.244,0-28.019L212.92,349.981L529.051,33.85c7.775-7.775,7.775-20.244,0-28.019	c-7.774-7.775-20.244-7.775-28.019,0L170.819,336.045C163.19,343.674,163.19,356.289,170.965,363.918z"/></svg>',
@@ -43,7 +41,7 @@
                 }]
             });
             
-            $(".page-home .showcase-list").slick({
+        $(".page-home .showcase-list").slick({
                 lazyLoad: 'ondemand',
                 slidesToShow: 4,
                 slidesToScroll: 4,
@@ -61,8 +59,6 @@
                     }
                 ]
             });
-        }
-        
         // cart support class
         if($('.caixa-cupom').length){
             $('.caixa-cupom').parents('tr').addClass('cupom-wrapper');
@@ -73,43 +69,44 @@
         }
         
         // open and close filters of smartfilter in catalog and search pages
-        $('.open-filters').on("click", function() {
+        $('.open-filters').on('click', () => {
             $('.filters-list').slideToggle();
         });
     
     });
     
      //Topo flutuante
-	var $fixedBar = $('.floating');
-	$(window).on("scroll", function(){
-		if($(window).scrollTop() > 212) {
-			$fixedBar.addClass('fixed');
-		} else {
-			$fixedBar.removeClass('fixed');
-		}
-	});
+        const $fixedBar = $('.floating');
+        $(window).on('scroll', () => {
+            if ($(window).scrollTop() > 212) {
+                $fixedBar.addClass('fixed');
+            } else {
+                $fixedBar.removeClass('fixed');
+            }
+        });
 	
     // modal login
-    $('.modal-login').on("click", function(event) {
+    $('.modal-login').on('click', (event) => {
        event.preventDefault();
        $('tray-login').show();
-    });		
+    });
     
 })(jQuery);
 
 // menu mobile
-(function(){
-    var btnMenu = document.getElementsByClassName('trigger-menu')[0];
-    var html = document.getElementsByTagName('html')[0];
-    var backdropMobile = document.getElementsByClassName('menu-mobile-backdrop')[0];
 
-    btnMenu.addEventListener('touchend', function(){
+(function(){
+    const btnMenu = document.getElementsByClassName('trigger-menu')[0];
+    const html = document.getElementsByTagName('html')[0];
+    const backdropMobile = document.getElementsByClassName('menu-mobile-backdrop')[0];
+
+    btnMenu.addEventListener('touchend', () => {
         html.classList.add('menu-open');
     });
 
-    html.addEventListener('touchend', function(e){
-        if(e.target == backdropMobile){
-            this.className = this.className.replace(new RegExp('(^|\\b)' + 'menu-open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    html.addEventListener('touchend', (e) => {
+        if (e.target == backdropMobile) {
+            html.className = html.className.replace(new RegExp('(^|\\b)' + 'menu-open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
         }
     });
 })();
